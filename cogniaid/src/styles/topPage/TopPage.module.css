@@ -1,0 +1,9 @@
+.bgPreset{
+  height: 100svh;
+  width: 100svw;
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url(../../assets/images/wallpaper.jpeg);
+  background-size: cover;
+  
+}
