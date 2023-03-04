@@ -7,3 +7,12 @@
   background-size: cover;
   
 }
+
+.logo{
+  font-family: Philosopher;
+  font-weight: 300;
+  font-size: xxx-large;
+  padding-left: 50px;
+  padding-top: 50px;
+  color: #363636;
+}
