@@ -1,10 +1,7 @@
 body {
-  font-family: 'Philosopher', Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+  font-family: 'Cormorant', Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
     "Helvetica Neue", sans-serif;
-
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  display: flex;
 }
 
 * {
@@ -16,11 +13,11 @@ body {
         vertical-align: baseline;
         background: transparent;
     }
-
+/* 
 main {
-  /* padding: 1em; */
+  padding: 1em;
   margin: 0 auto;
-}
+} */
 /* 
 h1 {
   color: #335d92;
@@ -31,19 +28,3 @@ h1 {
   margin: 4rem auto;
   max-width: 14rem;
 } */
-
-p {
-  max-width: 14rem;
-  margin: 2rem auto;
-  line-height: 1.35;
-}
-
-@media (min-width: 480px) {
-  h1 {
-    max-width: none;
-  }
-
-  p {
-    max-width: none;
-  }
-}

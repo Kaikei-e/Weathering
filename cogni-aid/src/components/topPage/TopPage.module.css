@@ -1,18 +1,53 @@
-.bgPreset{
+.bgPreset {
   height: 100svh;
   width: 100svw;
-  min-width: 100%;
-  min-height: 100%;
   background-image: url(/images/wallpaper.jpeg);
   background-size: cover;
-  
 }
 
-.logo{
-  font-family: Philosopher;
-  font-weight: 300;
+.logo {
+  height: 20%;
+  width: 80%;
+  font-family: Cormorant;
+  font-weight: 400;
   font-size: xxx-large;
   padding-left: 50px;
   padding-top: 50px;
-  color: #363636;
+  color: #1a1a1a;
 }
+
+.layout {
+  width: 100lvw;
+  height: 100lvh;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.enterPosition {
+  height: 100%;
+  width: 100%;
+  justify-content: end;
+}
+
+.enter {
+  position: fixed;
+  left: 80%;
+  bottom: 10%;
+  height: 4%;
+  width: 10%;
+  font-family: Cormorant;
+  font-size: xx-large;
+  font-weight: 400;
+  color: aliceblue;
+  border: solid 3px whitesmoke;
+  border-radius: 8px;
+}
+
+.enterTextATag {
+  text-decoration: none;
+  color: aliceblue;
+}
+  
