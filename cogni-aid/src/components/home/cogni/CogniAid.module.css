@@ -1,0 +1,32 @@
+.bgStyle {
+  width: 100vw;
+  height: 100lvh;
+  padding: 2%;  
+}
+
+.cardStyle{
+  height: 90vh;
+  width: 98%;
+}
+
+.headline {
+  font-size: xxx-large;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.description {
+  font-size: xx-large;
+  font-weight: semi-bold;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.inputColumns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1%;
+}
