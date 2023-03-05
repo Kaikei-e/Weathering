@@ -1,4 +1,4 @@
-import styles from '../../styles/topPage/TopPage.module.css';
+import styles from './TopPage.module.css';
 
 const TopPage = () => {
   return (
