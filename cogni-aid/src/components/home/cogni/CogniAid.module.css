@@ -1,12 +1,8 @@
 .bgStyle {
-  width: 100vw;
-  height: 100lvh;
-  padding: 2%;  
-}
-
-.cardStyle{
-  height: 90vh;
-  width: 98%;
+  width: 95vw;
+  height: 95vh;
+  padding: 1%; 
+  justify-content: center;
 }
 
 .headline {
