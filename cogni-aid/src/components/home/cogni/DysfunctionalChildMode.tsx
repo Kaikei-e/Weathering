@@ -4,7 +4,7 @@ const DysfunctionalChildMode = () => {
 
   return (
     <div class={styles.layout}>
-      <h1>Dysfunctional Child Mode</h1>
+      <h1 class={styles.headline}>Dysfunctional Child Mode</h1>
       <p>
         This mode represents the dysfunctional child in you.
         You can confess your feelings honestly to this mode.

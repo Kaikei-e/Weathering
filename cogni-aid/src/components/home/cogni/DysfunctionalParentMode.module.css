@@ -4,4 +4,16 @@
   height: 90vh;
   width: 30%;
   padding: 1%;
+  background-color: rgb(233, 173, 173);
+  border-radius: 15px;
+}
+
+.headline {
+  font-size: xx-large;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 1px solid #597594;
+  border-radius: 5px;
+  padding: 6px;
 }
