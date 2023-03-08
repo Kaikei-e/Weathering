@@ -1,13 +1,12 @@
 .layout {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   height: 80vh;
   width: 30%;
   padding: 1%;
   background-color: #97d4ab;
   border-radius: 15px;
   align-items: center;
-
 }
 
 .headline {
@@ -28,7 +27,7 @@
   margin-top: 2%;
 }
 
-.opinionCard{
+.opinionCard {
   display: flex;
   flex-direction: column;
   height: 80%;
@@ -36,5 +35,4 @@
   padding: 2%;
   background-color: #d5e9db;
   border-radius: 15px;
-  
 }

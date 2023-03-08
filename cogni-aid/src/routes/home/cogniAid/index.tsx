@@ -1,5 +1,5 @@
-import CogniAidHome from '~/components/home/cogni/CogniAid';
-import styles from './index.module.css';
+import CogniAidHome from "~/components/home/cogni/CogniAid";
+import styles from "./index.module.css";
 
 const CogniAid = () => {
   return (

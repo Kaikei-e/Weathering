@@ -1,5 +1,5 @@
 import HomeIsland from "~/components/home/Home";
-import styles from "./index.module.css"
+import styles from "./index.module.css";
 
 const Home = () => {
   return (

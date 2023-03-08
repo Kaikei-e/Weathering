@@ -1,18 +1,18 @@
 body {
-  font-family: 'Cormorant', Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Cormorant", Gordita, Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
   display: flex;
 }
 
 * {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-    }
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
 /* 
 main {
   padding: 1em;

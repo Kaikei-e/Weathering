@@ -7,7 +7,8 @@
     "test": "vitest run",
     "test-watch": "vitest",
     "test-ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "fmt": "npx prettier --write ."
   },
   "type": "module",
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@vitest/coverage-c8": "^0.26.3",
     "@vitest/ui": "^0.26.3",
     "jsdom": "^20.0.3",
+    "prettier": "2.8.4",
     "solid-js": "^1.6.11",
     "solid-start": "^0.2.19",
     "solid-start-node": "^0.2.19",

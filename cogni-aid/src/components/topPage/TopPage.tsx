@@ -1,5 +1,5 @@
-import { A } from '@solidjs/router';
-import styles from './TopPage.module.css';
+import { A } from "@solidjs/router";
+import styles from "./TopPage.module.css";
 
 const TopPage = () => {
   return (
@@ -8,7 +8,9 @@ const TopPage = () => {
         <h1 class={styles.logo}>Weathering: Flow, Adapt, Overcome.</h1>
         <div class={styles.enterPosition}>
           <button class={styles.enter}>
-            <A href='/home' class={styles.enterTextATag}>Enter</A>
+            <A href="/home" class={styles.enterTextATag}>
+              Enter
+            </A>
           </button>
         </div>
       </div>
