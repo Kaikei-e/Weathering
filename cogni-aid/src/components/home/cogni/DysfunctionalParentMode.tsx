@@ -4,7 +4,7 @@ const DysfunctionalParentMode = () => {
   return (
     <div class={styles.layout}>
       <h1 class={styles.headline}>Dysfunctional Parent Mode</h1>
-      <p>
+      <p class={styles.description}>
         This mode represents the dysfunctional parent in you.
         In this mode you should write the noisy mind voice that accuse you.
       </p>

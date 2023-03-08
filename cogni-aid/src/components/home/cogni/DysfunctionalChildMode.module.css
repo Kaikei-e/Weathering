@@ -6,6 +6,7 @@
   padding: 1%;
   background-color: #d3da9b;
   border-radius: 15px;
+  align-items: center;
 }
 
 .headline {
@@ -16,4 +17,12 @@
   border: 1px solid #597594;
   border-radius: 5px;
   padding: 6px;
+}
+
+.description {
+  font-size: x-large;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 2%;
 }

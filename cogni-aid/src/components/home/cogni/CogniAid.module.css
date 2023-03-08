@@ -2,7 +2,6 @@
   width: 95vw;
   height: 95vh;
   padding: 1%; 
-  justify-content: center;
 }
 
 .headline {
@@ -23,6 +22,7 @@
 .inputColumns {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-top: 1%;
+  
 }
