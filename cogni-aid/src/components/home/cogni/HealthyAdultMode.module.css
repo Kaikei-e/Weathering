@@ -14,8 +14,6 @@
   font-weight: semi-bold;
   color: #1a1a1a;
   text-decoration: none;
-  border: 1px solid #597594;
-  border-radius: 5px;
   padding: 6px;
 }
 
@@ -30,9 +28,19 @@
 .opinionCard {
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 90%;
   width: 90%;
   padding: 2%;
+  margin-top: 2%;
   background-color: #d5e9db;
   border-radius: 15px;
+  font-size: x-large;
+}
+
+.opinionCardText  {
+  font-size: large;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 2%;
 }
