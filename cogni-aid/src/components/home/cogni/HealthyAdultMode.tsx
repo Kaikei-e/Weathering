@@ -15,12 +15,14 @@ const HealthyAdultMode = () => {
       <div class={styles.opinionCard}>
         <For each={opinions()} fallback={<div>No items</div>}>
           {(opinion) => (
-            <div class={styles.opinionCardText}>
-              <p>{opinion}</p>
+            <div>
+              <div class={styles.opinionCardText}>
+                <p>{opinion}</p>
+              </div>
+              <Writer input={opinion ? opinion : ""} />
             </div>
           )}
         </For>
-        {/* <Writer input={opinions}/> */}
       </div>
     </div>
   );

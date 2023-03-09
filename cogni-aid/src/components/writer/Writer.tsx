@@ -1,11 +1,10 @@
 import { createSignal } from "solid-js";
 import styles from "./Writer.module.css";
 
-const Writer = (props: { input: string; push: (arg0: string) => void }) => {
+const [opinions, setOpinion] = createSignal<string[]>([""]);
+
+const Writer = (props: { input: string}) => {
   const [text, setText] = createSignal<string>(props.input);
-  const setProps = () => {
-    props.push(text());
-  };
 
   return (
     <div>
@@ -15,7 +14,17 @@ const Writer = (props: { input: string; push: (arg0: string) => void }) => {
           onChange={(e) => setText((e.target as HTMLInputElement).value)}
           placeholder="Act as above mode."
         />
-        <button type="submit" onsubmit={setProps}>
+        <button
+          type="submit"
+          onsubmit={
+            opinions().length > 0
+              ? (e) => {
+                  e.preventDefault();
+                  props.input = text();
+                }
+              : (e) => e.preventDefault()
+          }
+        >
           Submit
         </button>
       </form>
