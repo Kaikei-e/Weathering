@@ -1,0 +1,62 @@
+Arguments: 
+  /usr/local/bin/node /Users/koko/.node/corepack/yarn/1.22.15/bin/yarn.js set version from sources
+
+PATH: 
+  /opt/homebrew/Caskroom/miniconda/base/bin:/opt/homebrew/Caskroom/miniconda/base/condabin:/Users/koko/.pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/koko/.cargo/bin:/Users/koko/Library/Application Support/JetBrains/Toolbox/scripts
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  16.16.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: Release not found: from
+      at /Users/koko/.node/corepack/yarn/1.22.15/lib/cli.js:86353:17
+      at Generator.next (<anonymous>)
+      at step (/Users/koko/.node/corepack/yarn/1.22.15/lib/cli.js:310:30)
+      at /Users/koko/.node/corepack/yarn/1.22.15/lib/cli.js:321:13
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+npm manifest: 
+  {
+    "name": "cogni-aid",
+    "scripts": {
+      "dev": "solid-start dev",
+      "build": "solid-start build",
+      "start": "solid-start start",
+      "test": "vitest run",
+      "test-watch": "vitest",
+      "test-ui": "vitest --ui",
+      "coverage": "vitest run --coverage",
+      "fmt": "npx prettier --write ."
+    },
+    "type": "module",
+    "devDependencies": {
+      "@solidjs/meta": "^0.28.2",
+      "@solidjs/router": "^0.7.0",
+      "@solidjs/testing-library": "^0.5.2",
+      "@testing-library/jest-dom": "^5.16.5",
+      "@types/testing-library__jest-dom": "^5.14.5",
+      "@vitest/coverage-c8": "^0.26.3",
+      "@vitest/ui": "^0.26.3",
+      "jsdom": "^20.0.3",
+      "prettier": "2.8.4",
+      "solid-js": "^1.6.11",
+      "solid-start": "^0.2.19",
+      "solid-start-node": "^0.2.19",
+      "typescript": "^4.9.4",
+      "undici": "^5.15.1",
+      "vite": "^4.1.4",
+      "vitest": "^0.26.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
