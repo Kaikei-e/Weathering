@@ -22,5 +22,10 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals("Hello World!", bodyAsText())
         }
+
+        client.get("/api/system/ping").apply {
+            assertEquals(HttpStatusCode.OK, status)
+            assertEquals("pong", bodyAsText())
+        }
     }
 }
