@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { css } from "@emotion/react";
 
 const ChairWork = () => {
   useEffect(() => {
@@ -12,7 +13,15 @@ const ChairWork = () => {
   });
 
   return (
-    <div>
+    <div
+      css={css`
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      `}
+    >
       <h1>Chair Work</h1>
       <p>
         Chair Work is a technique that helps you to understand your own thoughts
