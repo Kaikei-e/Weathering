@@ -3,6 +3,15 @@ import { useEffect } from "react";
 import { css } from "@emotion/react";
 
 const ChairWork = () => {
+  useEffect(() => {
+    axios
+      .get("/api/system/ping")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  });
+
   return (
     <div
       css={css`
@@ -14,14 +23,10 @@ const ChairWork = () => {
         background-color: #1e3447;
       `}
     >
-      <h1>Weathering</h1>
+      <h1>Chair Work</h1>
       <p>
-        Weathering is an application that helps you flow with, adapt to, and
-        overcome the waves of your emotions.
-      </p>
-      <p>
-        It assists you in regaining control and a sense of mastery over your
-        feelings.
+        Chair Work is a technique that helps you to understand your own thoughts
+        and feelings by having a conversation with yourself.
       </p>
     </div>
   );
