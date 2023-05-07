@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import Router from "next/router";
 
 const Home = () => {
   return (
@@ -69,7 +70,7 @@ const Home = () => {
             align-items: flex-end;
             width: 30%;
             height: 100%;
-            font-family: 'Domine', serif;
+            font-family: "Domine", serif;
           `}
         >
           <button
@@ -89,10 +90,14 @@ const Home = () => {
                 color: black;
               }
             `}
+            onClick={() => {
+              Router.push("/home");
+            }}
           >
             <text
               css={css`
                 font-size: 32px;
+                font-family: "Domine", serif;
               `}
             >
               Departure
