@@ -9,6 +9,16 @@
   background-size: cover;
 }
 
+.bgHome {
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  overflow: hidden;
+  background-color: beige;
+}
+
 /* :root {
 } */
 

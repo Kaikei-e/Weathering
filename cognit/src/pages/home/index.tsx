@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 
 const Home = () => {
   return (
-    <div className={"bgWrap"}>
+    <div className={"bgHome"}>
       <div
         css={css`
           width: 100%;
@@ -23,7 +23,7 @@ const Home = () => {
         >
           <h1
             css={css`
-              color: white;
+              color: black;
             `}
           >
             Weathering: Flow, Adapt, Overcome !
