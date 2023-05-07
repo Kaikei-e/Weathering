@@ -14,10 +14,12 @@ const Home = () => {
         <div
           css={css`
             position: absolute;
-            top: 4%;
-            left: 4%;
+            top: 2%;
+            left: 2%;
+            width: inherit;
+            height: inherit;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             font-family: "Domine", serif;
           `}
         >
@@ -28,6 +30,35 @@ const Home = () => {
           >
             Weathering: Flow, Adapt, Overcome !
           </h1>
+          <div
+            css={css`
+              display: flex;
+              flex-direction: row;
+              width: 100%;
+              height: 100vh;
+            `}
+          >
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 30%;
+                height: 90vh;
+              `}
+            >
+              <h2>Cognit: virtual chair work</h2>
+            </div>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 30%;
+                height: 90vh;
+              `}
+            >
+              <h2>EeMotion: logging your mood</h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
