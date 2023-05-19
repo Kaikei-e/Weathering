@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import Button from "next/link";
 
 const Home = () => {
   return (
@@ -32,21 +33,36 @@ const Home = () => {
           </h1>
           <div
             css={css`
-              display: flex;
-              flex-direction: row;
               width: 100%;
               height: 100vh;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: repeat(2, 1fr);
+              grid-gap: 10px;
             `}
           >
             <div
               css={css`
+                width: 100%;
+                height: 80%;
                 display: flex;
                 flex-direction: row;
-                width: 30%;
-                height: 90vh;
+                justify-content: center;
               `}
             >
-              <h2>Cognit: virtual chair work</h2>
+              <Button
+                href={"/chairWork"}
+                css={css`
+                  width: 60%;
+                  height: 40%;
+                  background-color: azure;
+                  border-radius: 10px;
+                  border: 1px solid black;
+                  text-align: center;
+                `}
+              >
+                <h2>Cognit: virtual chair work</h2>
+              </Button>
             </div>
             <div
               css={css`
@@ -57,6 +73,26 @@ const Home = () => {
               `}
             >
               <h2>EeMotion: logging your mood</h2>
+            </div>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 30%;
+                height: 90vh;
+              `}
+            >
+              <h2>Easy Take: Just a simple note. Write anything.</h2>
+            </div>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: row;
+                width: 30%;
+                height: 90vh;
+              `}
+            >
+              <h2>4 Cirlces: Stabilize your breathing</h2>
             </div>
           </div>
         </div>
