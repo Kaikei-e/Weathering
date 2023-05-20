@@ -100,7 +100,13 @@ const ChairWork = () => {
         <Schema
           title={"Dysfunctional Parent"}
           cssProperties={cssProperties}
-          modeStatement={<div>This is the Dysfunctional Parent Mode.</div>}
+          modeStatement={
+            <StatementParagraph
+              fontSize={24}
+              color={"black"}
+              statement={dysfunctionalParentModeStatement}
+            />
+          }
         />
       </div>
     </div>
@@ -117,6 +123,17 @@ const dysfunctionalChildModeStatement = `This Dysfunctional child mode represent
 such as 'fear', 'sadness', and 'loneliness'. 
 Here, please be honest with the raw emotions welling up from within you and express them. 
 For example, 'I'm so anxious about the job interview tomorrow'.`;
+
+const dysfunctionalParentModeStatement = `This is the Dysfunctional Parent Mode.
+This dysfunctional parent mode represents the critical thoughts in your mind. 
+Consider it as a collection of critical thoughts about yourself, not actual parents. 
+These thoughts speak to you like, 'You're an adult, so you should do X', 
+'You are the eldest son, so you should protect your family', 
+'Aren't you ashamed as a woman?'. 
+These set limitations on your actions and thoughts. 
+However, please write them down as they are here. 
+Then, you're going to break them down in a healthy adult mode.
+`;
 
 const cssProperties = css`
   width: 28%;
