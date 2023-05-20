@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { css } from "@emotion/react";
 import { Schema } from "@/components/schema/mode";
+import StatementParagraph from "@/components/base/modal/statementParagraph";
 
 const ChairWork = () => {
   useEffect(() => {
@@ -76,19 +77,28 @@ const ChairWork = () => {
       >
         <Schema
           title={"Healthy Adult"}
-          description={"fuga"}
           cssProperties={cssProperties}
-          modeStatement={<div>This is the Healthy Adult Mode.</div>}
+          modeStatement={
+            <StatementParagraph
+              fontSize={24}
+              color={"black"}
+              statement={healthyAdultModeStatement}
+            />
+          }
         />
         <Schema
           title={"Dysfunctional Child"}
-          description={"This is your "}
           cssProperties={cssProperties}
-          modeStatement={<div>This is the Dysfunctional Child Mode.</div>}
+          modeStatement={
+            <StatementParagraph
+              fontSize={24}
+              color={"black"}
+              statement={dysfunctionalChildModeStatement}
+            />
+          }
         />
         <Schema
           title={"Dysfunctional Parent"}
-          description={"fuga"}
           cssProperties={cssProperties}
           modeStatement={<div>This is the Dysfunctional Parent Mode.</div>}
         />
@@ -96,6 +106,17 @@ const ChairWork = () => {
     </div>
   );
 };
+
+const healthyAdultModeStatement = `This is the Healthy Adult Mode. 
+The gardian of your inner mind. 
+In this mode, Envision an absolute protector, 
+and actively, with a touch of humor, 
+focus on the facts to rebut the thoughts of other modes.`;
+
+const dysfunctionalChildModeStatement = `This Dysfunctional child mode represents the primal emotions in your heart, 
+such as 'fear', 'sadness', and 'loneliness'. 
+Here, please be honest with the raw emotions welling up from within you and express them. 
+For example, 'I'm so anxious about the job interview tomorrow'.`;
 
 const cssProperties = css`
   width: 28%;

@@ -27,7 +27,14 @@ const ModalButton: React.FC<Props> = (props: Props) => {
       `}
       onClick={props.onClick}
     >
-      {props.children}
+      <div
+        css={css`
+          font-family: Domine serif;
+          font-size: 16px;
+        `}
+      >
+        {props.children}
+      </div>
     </button>
   );
 };

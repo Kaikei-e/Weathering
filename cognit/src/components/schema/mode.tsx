@@ -8,7 +8,6 @@ import ModalButton from "../base/modal/modalButton";
 
 type Props = {
   title: string;
-  description: string;
   cssProperties: SerializedStyles;
   modeStatement: React.ReactNode;
 };
@@ -20,10 +19,6 @@ export const Schema: React.FC<Props> = (props: Props) => {
     setIsOpen(true);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   return (
     <div css={props.cssProperties}>
       <h1
@@ -33,7 +28,6 @@ export const Schema: React.FC<Props> = (props: Props) => {
       >
         {props.title}
       </h1>
-      <p>{props.description}</p>
       <ModalButton onClick={openModal}>About this mode</ModalButton>
       {
         <Modal
@@ -44,7 +38,6 @@ export const Schema: React.FC<Props> = (props: Props) => {
           content={props.modeStatement}
         />
       }
-      {/* <Toast message={"error !!!"} type={"error"} /> */}
     </div>
   );
 };

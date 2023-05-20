@@ -35,10 +35,9 @@ const Modal: React.FC<Props> = ({ isOpen, closeModal, content }) => {
         `}
       >
         {content}
-
         <button
           css={css`
-            background-color: #88f4f6;
+            background-color: #689fcf;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -49,6 +48,7 @@ const Modal: React.FC<Props> = ({ isOpen, closeModal, content }) => {
 
             &:hover {
               background-color: #88f4f6;
+              color: black;
             }
           `}
           onClick={closeModal}
