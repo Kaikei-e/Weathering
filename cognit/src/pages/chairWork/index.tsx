@@ -78,16 +78,19 @@ const ChairWork = () => {
           title={"Healthy Adult"}
           description={"fuga"}
           cssProperties={cssProperties}
+          modeStatement={<div>This is the Healthy Adult Mode.</div>}
         />
         <Schema
-          title={"Dysfunctional Child Mode"}
+          title={"Dysfunctional Child"}
           description={"This is your "}
           cssProperties={cssProperties}
+          modeStatement={<div>This is the Dysfunctional Child Mode.</div>}
         />
         <Schema
-          title={"Dysfunctional Parent Mode"}
+          title={"Dysfunctional Parent"}
           description={"fuga"}
           cssProperties={cssProperties}
+          modeStatement={<div>This is the Dysfunctional Parent Mode.</div>}
         />
       </div>
     </div>
@@ -102,7 +105,7 @@ const cssProperties = css`
   border: white 1px solid;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #689fcf;
 `;
