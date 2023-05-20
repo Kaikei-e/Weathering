@@ -22,14 +22,40 @@ const ChairWork = () => {
         height: 100vh;
         display: flex;
         flex-direction: column;
-        background-color: #1e3447;
+        background-color: #f1f3e6;
       `}
     >
-      <h1>Chair Work</h1>
-      <p>
-        Chair Work is a technique that helps you to understand your own thoughts
-        and feelings by having a conversation with yourself.
-      </p>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          font-family: "Domine", serif;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          padding: 1%;
+        `}
+      >
+        <h1
+          css={css`
+            margin: 1%;
+          `}
+        >
+          Chair Work
+        </h1>
+        <div
+          css={css`
+            margin: 1%;
+            font-size: 20px;
+          `}
+        >
+          <p>
+            Chair Work is a technique that helps you to understand your own
+            thoughts
+          </p>
+          <p>and feelings by having a conversation with yourself.</p>
+        </div>
+      </div>
     </div>
   );
 };
