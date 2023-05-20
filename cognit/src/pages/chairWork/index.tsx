@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { css } from "@emotion/react";
+import { Schema } from "@/components/schema/mode";
 
 const ChairWork = () => {
   useEffect(() => {
@@ -56,6 +57,13 @@ const ChairWork = () => {
           <p>and feelings by having a conversation with yourself.</p>
         </div>
       </div>
+      <h2
+        css={css`
+          text-align: center;
+        `}
+      >
+        Each mode
+      </h2>
       <div
         css={css`
           display: flex;
@@ -66,6 +74,11 @@ const ChairWork = () => {
           overflow: auto;
         `}
       >
+        <Schema
+          title={"Healthy Adult"}
+          description={"fuga"}
+          cssProperties={cssProperties}
+        />
         <div
           css={css`
             width: 28%;
@@ -83,24 +96,8 @@ const ChairWork = () => {
         <div
           css={css`
             width: 28%;
-            height: 90%;
-
-            margin: 1%;
-            border-radius: 12px;
-            border: white 1px solid;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #689fcf;
-          `}
-        ></div>
-        <div
-          css={css`
-            width: 28%;
             margin: 1%;
             height: 90%;
-
             border-radius: 12px;
             border: white 1px solid;
             display: flex;
@@ -114,5 +111,18 @@ const ChairWork = () => {
     </div>
   );
 };
+
+const cssProperties = css`
+  width: 28%;
+  height: 90%;
+  margin: 1%;
+  border-radius: 12px;
+  border: white 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #689fcf;
+`;
 
 export default ChairWork;
