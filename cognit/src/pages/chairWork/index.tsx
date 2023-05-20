@@ -79,34 +79,16 @@ const ChairWork = () => {
           description={"fuga"}
           cssProperties={cssProperties}
         />
-        <div
-          css={css`
-            width: 28%;
-            height: 90%;
-            margin: 1%;
-            border-radius: 12px;
-            border: white 1px solid;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #689fcf;
-          `}
-        ></div>
-        <div
-          css={css`
-            width: 28%;
-            margin: 1%;
-            height: 90%;
-            border-radius: 12px;
-            border: white 1px solid;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #689fcf;
-          `}
-        ></div>
+        <Schema
+          title={"Dysfunctional Child Mode"}
+          description={"This is your "}
+          cssProperties={cssProperties}
+        />
+        <Schema
+          title={"Dysfunctional Parent Mode"}
+          description={"fuga"}
+          cssProperties={cssProperties}
+        />
       </div>
     </div>
   );
