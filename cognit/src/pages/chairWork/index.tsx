@@ -56,6 +56,61 @@ const ChairWork = () => {
           <p>and feelings by having a conversation with yourself.</p>
         </div>
       </div>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          height: 80vh;
+          justify-content: center;
+          overflow: auto;
+        `}
+      >
+        <div
+          css={css`
+            width: 28%;
+            height: 90%;
+            margin: 1%;
+            border-radius: 12px;
+            border: white 1px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #689fcf;
+          `}
+        ></div>
+        <div
+          css={css`
+            width: 28%;
+            height: 90%;
+
+            margin: 1%;
+            border-radius: 12px;
+            border: white 1px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #689fcf;
+          `}
+        ></div>
+        <div
+          css={css`
+            width: 28%;
+            margin: 1%;
+            height: 90%;
+
+            border-radius: 12px;
+            border: white 1px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #689fcf;
+          `}
+        ></div>
+      </div>
     </div>
   );
 };
