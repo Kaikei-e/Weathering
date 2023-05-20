@@ -17,8 +17,8 @@ const Home = () => {
             position: absolute;
             top: 2%;
             left: 2%;
-            width: inherit;
-            height: inherit;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             font-family: "Domine", serif;
@@ -34,7 +34,7 @@ const Home = () => {
           <div
             css={css`
               width: 100%;
-              height: 100vh;
+              height: 50vh;
               display: grid;
               grid-template-columns: repeat(2, 1fr);
               grid-template-rows: repeat(2, 1fr);
@@ -43,17 +43,16 @@ const Home = () => {
           >
             <div
               css={css`
-                width: 100%;
-                height: 80%;
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
+                width: 100%;
+                height: 40vh;
               `}
             >
               <Button
                 href={"/chairWork"}
                 css={css`
-                  width: 60%;
+                  width: 50%;
                   height: 40%;
                   background-color: azure;
                   border-radius: 10px;
@@ -68,8 +67,8 @@ const Home = () => {
               css={css`
                 display: flex;
                 flex-direction: row;
-                width: 30%;
-                height: 90vh;
+                width: 100%;
+                height: 40vh;
               `}
             >
               <h2>EeMotion: logging your mood</h2>
@@ -78,8 +77,8 @@ const Home = () => {
               css={css`
                 display: flex;
                 flex-direction: row;
-                width: 30%;
-                height: 90vh;
+                width: 100%;
+                height: 40vh;
               `}
             >
               <h2>Easy Take: Just a simple note. Write anything.</h2>
@@ -88,8 +87,8 @@ const Home = () => {
               css={css`
                 display: flex;
                 flex-direction: row;
-                width: 30%;
-                height: 90vh;
+                width: 100%;
+                height: 40vh;
               `}
             >
               <h2>4 Cirlces: Stabilize your breathing</h2>
