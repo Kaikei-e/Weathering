@@ -1,14 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/css";
-import { SerializedStyles } from "@emotion/react";
+import { ClassNames } from "@emotion/react";
 import React, { useState } from "react";
-import Toast from "../base/toast";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 
 type Props = {
+  className?: string;
   title: string;
-  cssProperties: SerializedStyles;
   modeStatement: React.ReactNode;
 };
 
@@ -20,7 +19,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div css={props.cssProperties}>
+    <div className={props.className}>
       <h1
         css={css`
           text-align: center;

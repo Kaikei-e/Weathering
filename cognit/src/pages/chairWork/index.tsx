@@ -7,14 +7,14 @@ import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
 
 const ChairWork = () => {
-  useEffect(() => {
-    axios
-      .get("/api/system/ping")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  });
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/system/ping")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // });
 
   return (
     <div
@@ -40,7 +40,6 @@ const ChairWork = () => {
       >
         <h1
           css={css`
-            margin: 1%;
           `}
         >
           Chair Work
@@ -77,7 +76,7 @@ const ChairWork = () => {
       >
         <Schema
           title={"Healthy Adult"}
-          cssProperties={cssProperties}
+          css={modeStyle}
           modeStatement={
             <StatementParagraph
               fontSize={24}
@@ -88,7 +87,7 @@ const ChairWork = () => {
         />
         <Schema
           title={"Dysfunctional Child"}
-          cssProperties={cssProperties}
+          css={modeStyle}
           modeStatement={
             <StatementParagraph
               fontSize={24}
@@ -99,7 +98,7 @@ const ChairWork = () => {
         />
         <Schema
           title={"Dysfunctional Parent"}
-          cssProperties={cssProperties}
+          css={modeStyle}
           modeStatement={
             <StatementParagraph
               fontSize={24}
@@ -135,7 +134,7 @@ However, please write them down as they are here.
 Then, you're going to break them down in a healthy adult mode.
 `;
 
-const cssProperties = css`
+const modeStyle = css`
   width: 28%;
   height: 90%;
   margin: 1%;
