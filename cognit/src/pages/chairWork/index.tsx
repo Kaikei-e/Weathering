@@ -1,7 +1,4 @@
 /** @jsxImportSource @emotion/react */
-
-import axios from "axios";
-import { useEffect } from "react";
 import { css } from "@emotion/react";
 import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";

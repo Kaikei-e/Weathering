@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import React, { useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
@@ -36,6 +36,22 @@ export const Schema: React.FC<Props> = (props: Props) => {
           content={props.modeStatement}
         />
       }
+      <div
+        css={css`
+          width: 90%;
+          height: 80%;
+          margin-top: 4%;
+          border-radius: 10px;
+          border: midnightblue solid 1px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          background-color: azure;
+        `}
+      >
+        <text>test</text>
+      </div>
     </div>
   );
 };
