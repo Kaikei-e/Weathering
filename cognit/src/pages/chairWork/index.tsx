@@ -38,12 +38,7 @@ const ChairWork = () => {
           padding: 1%;
         `}
       >
-        <h1
-          css={css`
-          `}
-        >
-          Chair Work
-        </h1>
+        <h1 css={css``}>Chair Work</h1>
         <div
           css={css`
             margin: 1%;
