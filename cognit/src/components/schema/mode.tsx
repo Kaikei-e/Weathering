@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 
@@ -8,14 +8,21 @@ type Props = {
   className?: string;
   title: string;
   modeStatement: React.ReactNode;
+  moodSentences: string[];
 };
 
 export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isThisMode, setIsThisMode] = useState(false);
+  const [sentences, setSentences] = useState<string[]>([]);
 
   const openModal = () => {
     setIsOpen(true);
   };
+
+  useEffect(() => {
+    setSentences(props.moodSentences);
+  }, [props.moodSentences]);
 
   return (
     <div className={props.className}>
@@ -45,12 +52,37 @@ export const Schema: React.FC<Props> = (props: Props) => {
           border: midnightblue solid 1px;
           display: flex;
           flex-direction: column;
-          justify-content: center;
           text-align: center;
           background-color: azure;
         `}
       >
-        <text>test</text>
+        <ul>
+          {sentences.map((sentence, index) => {
+            return (
+              <li
+                key={index}
+                css={css`
+                  width: 90%;
+                  height: 20%;
+                  border-radius: 10px;
+                  margin-top: 2%;
+                  background-color: aliceblue;
+                `}
+              >
+                {sentence ? sentence : "No sentence"}
+              </li>
+            );
+          })}
+        </ul>
+        {(() => {
+          if (isThisMode) {
+            return (
+              <div>
+                <p>このモードです</p>
+              </div>
+            );
+          }
+        })()}
       </div>
     </div>
   );

@@ -4,15 +4,6 @@ import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
 
 const ChairWork = () => {
-  // useEffect(() => {
-  //   axios
-  //     .get("/api/system/ping")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // });
-
   return (
     <div
       css={css`
@@ -38,7 +29,6 @@ const ChairWork = () => {
         <h1 css={css``}>Chair Work</h1>
         <div
           css={css`
-            margin: 1%;
             font-size: 20px;
           `}
         >
@@ -59,46 +49,79 @@ const ChairWork = () => {
       <div
         css={css`
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           width: 100%;
           height: 80vh;
           justify-content: center;
-          overflow: auto;
+          align-items: center;
         `}
       >
-        <Schema
-          title={"Healthy Adult"}
-          css={modeStyle}
-          modeStatement={
-            <StatementParagraph
-              fontSize={24}
-              color={"black"}
-              statement={healthyAdultModeStatement}
-            />
-          }
-        />
-        <Schema
-          title={"Dysfunctional Child"}
-          css={modeStyle}
-          modeStatement={
-            <StatementParagraph
-              fontSize={24}
-              color={"black"}
-              statement={dysfunctionalChildModeStatement}
-            />
-          }
-        />
-        <Schema
-          title={"Dysfunctional Parent"}
-          css={modeStyle}
-          modeStatement={
-            <StatementParagraph
-              fontSize={24}
-              color={"black"}
-              statement={dysfunctionalParentModeStatement}
-            />
-          }
-        />
+        <div
+          css={css`
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 90%;
+            justify-content: center;
+            overflow: auto;
+          `}
+        >
+          <Schema
+            title={"Healthy Adult"}
+            css={modeStyle}
+            moodSentences={[]}
+            modeStatement={
+              <StatementParagraph
+                fontSize={24}
+                color={"black"}
+                statement={healthyAdultModeStatement}
+              />
+            }
+          />
+          <Schema
+            title={"Dysfunctional Child"}
+            css={modeStyle}
+            moodSentences={[]}
+            modeStatement={
+              <StatementParagraph
+                fontSize={24}
+                color={"black"}
+                statement={dysfunctionalChildModeStatement}
+              />
+            }
+          />
+          <Schema
+            title={"Dysfunctional Parent"}
+            css={modeStyle}
+            moodSentences={[]}
+            modeStatement={
+              <StatementParagraph
+                fontSize={24}
+                color={"black"}
+                statement={dysfunctionalParentModeStatement}
+              />
+            }
+          />
+        </div>
+
+        <button
+          css={css`
+            width: 20%;
+            height: 6%;
+            border-radius: 10px;
+            border: midnightblue solid 1px;
+            background-color: azure;
+            font-size: 24px;
+            font-family: "Domine", serif;
+            &:hover {
+              background-color: #f1f3e6;
+              cursor: pointer;
+            }
+            transition: background-color 0.3s ease;
+          `}
+        >
+          Switch Mode !!
+        </button>
       </div>
     </div>
   );
