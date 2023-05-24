@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import React, { useEffect, useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
+import LoadingCircle from "@/components/base/loadingCircle";
 
 type Props = {
   className?: string;
@@ -34,16 +35,36 @@ export const Schema: React.FC<Props> = (props: Props) => {
       >
         {props.title}
       </h1>
-      <ModalButton onClick={openModal}>About this mode</ModalButton>
-      {
-        <Modal
-          isOpen={isOpen}
-          closeModal={() => {
-            setIsOpen(false);
-          }}
-          content={props.modeStatement}
-        />
-      }
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        `}
+      >
+        {props.inTheMode ? (
+          <LoadingCircle />
+        ) : (
+          <p
+            css={css`
+              margin-right: 10px;
+            `}
+          >
+            Next
+          </p>
+        )}
+        <ModalButton onClick={openModal}>About this mode</ModalButton>
+        {
+          <Modal
+            isOpen={isOpen}
+            closeModal={() => {
+              setIsOpen(false);
+            }}
+            content={props.modeStatement}
+          />
+        }
+      </div>
       <div
         css={css`
           width: 90%;

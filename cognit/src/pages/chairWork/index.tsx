@@ -4,7 +4,6 @@ import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
 import { useEffect, useState } from "react";
 
-
 type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
 
 const enum ModeType {
@@ -34,15 +33,15 @@ function distributeMode(mode: number): ModeUnion {
     case ModeType.DysfunctionalParent:
       return { mode: ModeType.DysfunctionalParent };
     default:
-        return { mode: ModeType.HealthyAdult };
+      return { mode: ModeType.HealthyAdult };
   }
 }
 
-function modeResetter(mode : number) {
-    if (mode > 2) {
-        return 0;
-    }
-    return mode;
+function modeResetter(mode: number) {
+  if (mode > 2) {
+    return 0;
+  }
+  return mode;
 }
 
 const ChairWork = () => {
@@ -118,7 +117,6 @@ const ChairWork = () => {
             title={"Healthy Adult"}
             css={modeStyle}
             moodSentences={[]}
-
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -126,7 +124,8 @@ const ChairWork = () => {
                 statement={healthyAdultModeStatement}
               />
             }
-           inTheMode={(ModeType.HealthyAdult === mode)}/>
+            inTheMode={ModeType.HealthyAdult === mode}
+          />
           <Schema
             title={"Dysfunctional Child"}
             css={modeStyle}
@@ -138,7 +137,7 @@ const ChairWork = () => {
                 statement={dysfunctionalChildModeStatement}
               />
             }
-            inTheMode={(ModeType.DysfunctionalChild === mode)}
+            inTheMode={ModeType.DysfunctionalChild === mode}
           />
           <Schema
             title={"Dysfunctional Parent"}
@@ -151,7 +150,7 @@ const ChairWork = () => {
                 statement={dysfunctionalParentModeStatement}
               />
             }
-            inTheMode={(ModeType.DysfunctionalParent === mode)}
+            inTheMode={ModeType.DysfunctionalParent === mode}
           />
         </div>
 
@@ -171,7 +170,6 @@ const ChairWork = () => {
             transition: background-color 0.3s ease;
           `}
           onClick={() => {
-
             setMode(modeResetter(mode + 1));
             distributeMode(mode);
             console.log(mode);
@@ -183,7 +181,6 @@ const ChairWork = () => {
     </div>
   );
 };
-
 
 const healthyAdultModeStatement = `This is the Healthy Adult Mode. 
 The guardian of your inner mind. 
