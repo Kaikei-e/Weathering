@@ -38,7 +38,7 @@ function distributeMode(mode: number): ModeUnion {
   }
 }
 
-function modeRestter(mode : number) {
+function modeResetter(mode : number) {
     if (mode > 2) {
         return 0;
     }
@@ -172,7 +172,7 @@ const ChairWork = () => {
           `}
           onClick={() => {
 
-            setMode(modeRestter(mode + 1));
+            setMode(modeResetter(mode + 1));
             distributeMode(mode);
             console.log(mode);
           }}
