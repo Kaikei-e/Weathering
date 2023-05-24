@@ -2,8 +2,56 @@
 import { css } from "@emotion/react";
 import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
+import { useEffect, useState } from "react";
+
+
+type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
+
+const enum ModeType {
+  HealthyAdult = 0,
+  DysfunctionalChild = 1,
+  DysfunctionalParent = 2,
+}
+
+type HealthyAdult = {
+  mode: ModeType.HealthyAdult;
+};
+
+type DysfunctionalChild = {
+  mode: ModeType.DysfunctionalChild;
+};
+
+type DysfunctionalParent = {
+  mode: ModeType.DysfunctionalParent;
+};
+
+function distributeMode(mode: number): ModeUnion {
+  switch (mode) {
+    case ModeType.HealthyAdult:
+      return { mode: ModeType.HealthyAdult };
+    case ModeType.DysfunctionalChild:
+      return { mode: ModeType.DysfunctionalChild };
+    case ModeType.DysfunctionalParent:
+      return { mode: ModeType.DysfunctionalParent };
+    default:
+        return { mode: ModeType.HealthyAdult };
+  }
+}
+
+function modeRestter(mode : number) {
+    if (mode > 2) {
+        return 0;
+    }
+    return mode;
+}
 
 const ChairWork = () => {
+  const [mode, setMode] = useState(ModeType.HealthyAdult);
+
+  useEffect(() => {
+    setMode(mode);
+  });
+
   return (
     <div
       css={css`
@@ -70,6 +118,7 @@ const ChairWork = () => {
             title={"Healthy Adult"}
             css={modeStyle}
             moodSentences={[]}
+
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -77,7 +126,7 @@ const ChairWork = () => {
                 statement={healthyAdultModeStatement}
               />
             }
-          />
+           inTheMode={(ModeType.HealthyAdult === mode)}/>
           <Schema
             title={"Dysfunctional Child"}
             css={modeStyle}
@@ -89,6 +138,7 @@ const ChairWork = () => {
                 statement={dysfunctionalChildModeStatement}
               />
             }
+            inTheMode={(ModeType.DysfunctionalChild === mode)}
           />
           <Schema
             title={"Dysfunctional Parent"}
@@ -101,6 +151,7 @@ const ChairWork = () => {
                 statement={dysfunctionalParentModeStatement}
               />
             }
+            inTheMode={(ModeType.DysfunctionalParent === mode)}
           />
         </div>
 
@@ -119,6 +170,12 @@ const ChairWork = () => {
             }
             transition: background-color 0.3s ease;
           `}
+          onClick={() => {
+
+            setMode(modeRestter(mode + 1));
+            distributeMode(mode);
+            console.log(mode);
+          }}
         >
           Switch Mode !!
         </button>
@@ -127,8 +184,9 @@ const ChairWork = () => {
   );
 };
 
+
 const healthyAdultModeStatement = `This is the Healthy Adult Mode. 
-The gardian of your inner mind. 
+The guardian of your inner mind. 
 In this mode, Envision an absolute protector, 
 and actively, with a touch of humor, 
 focus on the facts to rebut the thoughts of other modes.`;

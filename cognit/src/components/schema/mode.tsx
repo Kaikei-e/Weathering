@@ -9,6 +9,7 @@ type Props = {
   title: string;
   modeStatement: React.ReactNode;
   moodSentences: string[];
+  inTheMode: boolean;
 };
 
 export const Schema: React.FC<Props> = (props: Props) => {
