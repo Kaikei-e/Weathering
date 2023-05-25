@@ -70,17 +70,17 @@ const ChairWork = () => {
   });
 
   const modeStyle = css`
-  width: 28%;
-  height: 90%;
-  margin: 1%;
-  border-radius: 12px;
-  border: black 1px solid;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: ${colorSwitcher(mode)};
-`;
+    width: 28%;
+    height: 90%;
+    margin: 1%;
+    border-radius: 12px;
+    border: black 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: ${colorSwitcher(mode)};
+  `;
 
   return (
     <div
@@ -194,7 +194,9 @@ const ChairWork = () => {
             css={[
               modeStyle,
               css`
-                background-color: ${colorSwitcher(ModeType.DysfunctionalParent)};
+                background-color: ${colorSwitcher(
+                  ModeType.DysfunctionalParent
+                )};
               `,
             ]}
           />
@@ -248,7 +250,5 @@ These set limitations on your actions and thoughts.
 However, please write them down as they are here. 
 Then, you're going to break them down in a healthy adult mode.
 `;
-
-
 
 export default ChairWork;
