@@ -11,7 +11,7 @@ const ModalButton: React.FC<Props> = (props: Props) => {
   return (
     <button
       css={css`
-        background-color: #b2feb2;
+        background-color: #d4faa6;
         color: #0c0a0a;
         border: none;
         padding: 12px 24px;

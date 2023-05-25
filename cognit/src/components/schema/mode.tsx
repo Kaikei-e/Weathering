@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 import LoadingCircle from "@/components/base/loadingCircle";
+import { useAtom } from "jotai";
+import { moodSentenceAtom } from "@/states/atoms/moodSentence";
 
 type Props = {
   className?: string;
@@ -15,9 +17,7 @@ type Props = {
 
 export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isThisMode, setIsThisMode] = useState(false);
-  const [sentences, setSentences] = useState<string[]>([]);
-
+  const [sentences, setSentences] = useAtom(moodSentenceAtom);
   const openModal = () => {
     setIsOpen(true);
   };
@@ -43,17 +43,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
           align-items: center;
         `}
       >
-        {props.inTheMode ? (
-          <LoadingCircle />
-        ) : (
-          <p
-            css={css`
-              margin-right: 10px;
-            `}
-          >
-            Next
-          </p>
-        )}
+        {props.inTheMode ? <LoadingCircle /> : <div></div>}
         <ModalButton onClick={openModal}>About this mode</ModalButton>
         {
           <Modal
@@ -68,8 +58,8 @@ export const Schema: React.FC<Props> = (props: Props) => {
       <div
         css={css`
           width: 90%;
-          height: 80%;
-          margin-top: 4%;
+          height: 100%;
+          margin: 4%;
           border-radius: 10px;
           border: midnightblue solid 1px;
           display: flex;
@@ -96,15 +86,60 @@ export const Schema: React.FC<Props> = (props: Props) => {
             );
           })}
         </ul>
-        {(() => {
-          if (isThisMode) {
-            return (
-              <div>
-                <p>このモードです</p>
-              </div>
-            );
-          }
-        })()}
+        <div
+          css={css`
+            width: 100%;
+            height: 20%;
+            border-radius: 10px;
+            margin-top: 2%;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          `}
+        >
+          {(() => {
+            if (props.inTheMode) {
+              return (
+                <form
+                  css={css`
+                    width: 90%;
+                    height: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                  `}
+                >
+                  <input
+                    type="text"
+                    css={css`
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 5px;
+                      padding: 1%;
+                      background-color: #d4faa6;
+                    `}
+                  />
+                  <input
+                    type="submit"
+                    value="Submit"
+                    css={css`
+                      width: 60%;
+                      height: 50%;
+                      border-radius: 5px;
+                      margin-top: 1%;
+                      color: white;
+                      font-size: 20px;
+                      background-color: #689fcf;
+                    `}
+                  />
+                </form>
+              );
+            }
+          })()}
+        </div>
       </div>
     </div>
   );

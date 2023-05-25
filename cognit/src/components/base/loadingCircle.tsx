@@ -9,8 +9,8 @@ const LoadingCircle = () => {
         display: inline-block;
         width: 24px;
         height: 24px;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #72f552;
+        border: 4px solid #fcd3d3;
+        border-top: 4px solid #689fcf;
         border-radius: 50%;
         animation: spin 2s ease-in-out infinite;
         margin-right: 10px;

@@ -4,7 +4,7 @@ import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
 import { useEffect, useState } from "react";
 
-type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
+export type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
 
 const enum ModeType {
   HealthyAdult = 0,
@@ -37,6 +37,24 @@ function distributeMode(mode: number): ModeUnion {
   }
 }
 
+const enum modeColor {
+  HealthyAdult = "#d4faa6",
+  DysfunctionalChild = "#fdf48c",
+  DysfunctionalParent = "#fdb7cb",
+}
+
+function colorSwitcher(mode: ModeType): string {
+  switch (mode) {
+    case ModeType.HealthyAdult:
+      return modeColor.HealthyAdult;
+    case ModeType.DysfunctionalChild:
+      return modeColor.DysfunctionalChild;
+    case ModeType.DysfunctionalParent:
+      return modeColor.DysfunctionalParent;
+  }
+  return "skyblue";
+}
+
 function modeResetter(mode: number) {
   if (mode > 2) {
     return 0;
@@ -50,6 +68,19 @@ const ChairWork = () => {
   useEffect(() => {
     setMode(mode);
   });
+
+  const modeStyle = css`
+  width: 28%;
+  height: 90%;
+  margin: 1%;
+  border-radius: 12px;
+  border: black 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${colorSwitcher(mode)};
+`;
 
   return (
     <div
@@ -115,7 +146,6 @@ const ChairWork = () => {
         >
           <Schema
             title={"Healthy Adult"}
-            css={modeStyle}
             moodSentences={[]}
             modeStatement={
               <StatementParagraph
@@ -125,10 +155,15 @@ const ChairWork = () => {
               />
             }
             inTheMode={ModeType.HealthyAdult === mode}
+            css={[
+              modeStyle,
+              css`
+                background-color: ${colorSwitcher(ModeType.HealthyAdult)};
+              `,
+            ]}
           />
           <Schema
             title={"Dysfunctional Child"}
-            css={modeStyle}
             moodSentences={[]}
             modeStatement={
               <StatementParagraph
@@ -138,10 +173,15 @@ const ChairWork = () => {
               />
             }
             inTheMode={ModeType.DysfunctionalChild === mode}
+            css={[
+              modeStyle,
+              css`
+                background-color: ${colorSwitcher(ModeType.DysfunctionalChild)};
+              `,
+            ]}
           />
           <Schema
             title={"Dysfunctional Parent"}
-            css={modeStyle}
             moodSentences={[]}
             modeStatement={
               <StatementParagraph
@@ -151,6 +191,12 @@ const ChairWork = () => {
               />
             }
             inTheMode={ModeType.DysfunctionalParent === mode}
+            css={[
+              modeStyle,
+              css`
+                background-color: ${colorSwitcher(ModeType.DysfunctionalParent)};
+              `,
+            ]}
           />
         </div>
 
@@ -172,7 +218,6 @@ const ChairWork = () => {
           onClick={() => {
             setMode(modeResetter(mode + 1));
             distributeMode(mode);
-            console.log(mode);
           }}
         >
           Switch Mode !!
@@ -204,17 +249,6 @@ However, please write them down as they are here.
 Then, you're going to break them down in a healthy adult mode.
 `;
 
-const modeStyle = css`
-  width: 28%;
-  height: 90%;
-  margin: 1%;
-  border-radius: 12px;
-  border: white 1px solid;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #689fcf;
-`;
+
 
 export default ChairWork;
