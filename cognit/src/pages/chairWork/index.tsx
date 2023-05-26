@@ -67,7 +67,7 @@ const ChairWork = () => {
 
   useEffect(() => {
     setMode(mode);
-  });
+  }, [mode]);
 
   const modeStyle = css`
     width: 28%;
