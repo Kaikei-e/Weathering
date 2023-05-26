@@ -18,6 +18,8 @@ type Props = {
 export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sentences, setSentences] = useAtom(moodSentenceAtom);
+  const [writingSentence, setWritingSentence] = useState("");
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -59,33 +61,44 @@ export const Schema: React.FC<Props> = (props: Props) => {
         css={css`
           width: 90%;
           height: 100%;
-          margin: 4%;
+          margin: 1%;
           border-radius: 10px;
           border: midnightblue solid 1px;
           display: flex;
           flex-direction: column;
-          text-align: center;
           background-color: azure;
         `}
       >
-        <ul>
+        <ol
+          css={css`
+            padding: 4%;
+          `}
+        >
           {sentences.map((sentence, index) => {
             return (
               <li
                 key={index}
                 css={css`
-                  width: 90%;
-                  height: 20%;
                   border-radius: 10px;
-                  margin-top: 2%;
+                  margin: 1%;
                   background-color: aliceblue;
                 `}
               >
-                {sentence ? sentence : "No sentence"}
+                <text
+                  css={css`
+                    font-size: 16px;
+                    overflow: visible;
+                    resize: none;
+                    overflow-wrap: anywhere;
+                    text-align: start;
+                  `}
+                >
+                  {sentence ? sentence : "No sentence"}
+                </text>
               </li>
             );
           })}
-        </ul>
+        </ol>
         <div
           css={css`
             width: 100%;
@@ -102,7 +115,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
           {(() => {
             if (props.inTheMode) {
               return (
-                <form
+                <div
                   css={css`
                     width: 90%;
                     height: 80%;
@@ -121,10 +134,11 @@ export const Schema: React.FC<Props> = (props: Props) => {
                       padding: 1%;
                       background-color: #d4faa6;
                     `}
+                    onChange={(e) => {
+                      setWritingSentence(e.target.value);
+                    }}
                   />
-                  <input
-                    type="submit"
-                    value="Submit"
+                  <button
                     css={css`
                       width: 60%;
                       height: 50%;
@@ -134,8 +148,14 @@ export const Schema: React.FC<Props> = (props: Props) => {
                       font-size: 20px;
                       background-color: #689fcf;
                     `}
-                  />
-                </form>
+                    onClick={() => {
+                      setSentences([...sentences, writingSentence]);
+                    }}
+                  >
+                    {" "}
+                    Submit
+                  </button>
+                </div>
               );
             }
           })()}
