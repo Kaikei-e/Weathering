@@ -67,11 +67,18 @@ export const Schema: React.FC<Props> = (props: Props) => {
           display: flex;
           flex-direction: column;
           background-color: azure;
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
         `}
       >
         <ol
           css={css`
             padding: 4%;
+            
           `}
         >
           {sentences.map((sentence, index) => {
@@ -79,7 +86,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
               <li
                 key={index}
                 css={css`
-                  border-radius: 10px;
+                  border-radius: 5px;
                   margin: 1%;
                   background-color: aliceblue;
                 `}
