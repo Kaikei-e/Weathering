@@ -4,14 +4,15 @@ import React, { useEffect, useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 import LoadingCircle from "@/components/base/loadingCircle";
-import { useAtom } from "jotai";
-import { moodSentenceAtom } from "@/states/atoms/moodSentence";
+import {
+    moodSentenceAtom
+} from "@/states/atoms/moodSentence";
+import {atom, useAtom, useSetAtom} from "jotai";
 
 type Props = {
   className?: string;
   title: string;
   modeStatement: React.ReactNode;
-  moodSentences: string[];
   inTheMode: boolean;
 };
 
@@ -19,14 +20,16 @@ export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sentences, setSentences] = useAtom(moodSentenceAtom);
   const [writingSentence, setWritingSentence] = useState("");
+  const setSentence = useSetAtom(moodSentenceAtom);
 
   const openModal = () => {
     setIsOpen(true);
   };
 
-  useEffect(() => {
-    setSentences(props.moodSentences);
-  }, [props.moodSentences]);
+  //
+  // useEffect(() => {
+  //   setSentences(props.moodSentences);
+  // }, [props.moodSentences]);
 
   return (
     <div className={props.className}>
@@ -80,10 +83,10 @@ export const Schema: React.FC<Props> = (props: Props) => {
             padding: 4%;
           `}
         >
-          {sentences.map((sentence, index) => {
+          {sentences.map((sentence) => {
             return (
               <li
-                key={index}
+                key={`${sentence}`}
                 css={css`
                   border-radius: 5px;
                   margin: 1%;
@@ -99,7 +102,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
                     text-align: start;
                   `}
                 >
-                  {sentence ? sentence : "No sentence"}
+                  {atom((get) => get(sentence)) ? sentence : "No sentence"}
                 </text>
               </li>
             );
@@ -141,6 +144,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
                       background-color: #d4faa6;
                     `}
                     onChange={(e) => {
+                      console.log(e.target.value);
                       setWritingSentence(e.target.value);
                     }}
                   />
@@ -155,7 +159,11 @@ export const Schema: React.FC<Props> = (props: Props) => {
                       background-color: #689fcf;
                     `}
                     onClick={() => {
-                      setSentences([...sentences, writingSentence]);
+                      console.log(writingSentence);
+                      setSentence((sentences) => [
+                        ...sentences,
+                        writingSentence,
+                      ]);
                     }}
                   >
                     {" "}

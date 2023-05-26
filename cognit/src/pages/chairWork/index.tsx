@@ -3,6 +3,12 @@ import { css } from "@emotion/react";
 import { Schema } from "@/components/schema/mode";
 import StatementParagraph from "@/components/base/modal/statementParagraph";
 import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import {
+  adultSentenceAtom,
+  childSentenceAtom,
+  parentSentenceAtom,
+} from "@/states/atoms/moodSentence";
 
 export type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
 
@@ -14,26 +20,29 @@ const enum ModeType {
 
 type HealthyAdult = {
   mode: ModeType.HealthyAdult;
+  sentences: string[];
 };
 
 type DysfunctionalChild = {
   mode: ModeType.DysfunctionalChild;
+  sentences: string[];
 };
 
 type DysfunctionalParent = {
   mode: ModeType.DysfunctionalParent;
+  sentences: string[];
 };
 
-function distributeMode(mode: number): ModeUnion {
+function distributeMode(mode: number, sentences: string[]): ModeUnion {
   switch (mode) {
     case ModeType.HealthyAdult:
-      return { mode: ModeType.HealthyAdult };
+      return { mode: ModeType.HealthyAdult, sentences: sentences };
     case ModeType.DysfunctionalChild:
-      return { mode: ModeType.DysfunctionalChild };
+      return { mode: ModeType.DysfunctionalChild, sentences: sentences };
     case ModeType.DysfunctionalParent:
-      return { mode: ModeType.DysfunctionalParent };
+      return { mode: ModeType.DysfunctionalParent, sentences: sentences };
     default:
-      return { mode: ModeType.HealthyAdult };
+      return { mode: ModeType.HealthyAdult, sentences: sentences };
   }
 }
 
@@ -64,6 +73,9 @@ function modeResetter(mode: number) {
 
 const ChairWork = () => {
   const [mode, setMode] = useState(ModeType.HealthyAdult);
+  const [adultSentence, setAdultSentence] = useAtom(adultSentenceAtom);
+  const [childSentence, setChildSentence] = useAtom(childSentenceAtom);
+  const [parentSentence, setParentSentence] = useAtom(parentSentenceAtom);
 
   useEffect(() => {
     setMode(mode);
@@ -148,7 +160,7 @@ const ChairWork = () => {
         >
           <Schema
             title={"Healthy Adult"}
-            moodSentences={[]}
+            moodSentences={adultSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -166,7 +178,7 @@ const ChairWork = () => {
           />
           <Schema
             title={"Dysfunctional Child"}
-            moodSentences={[]}
+            moodSentences={childSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -184,7 +196,7 @@ const ChairWork = () => {
           />
           <Schema
             title={"Dysfunctional Parent"}
-            moodSentences={[]}
+            moodSentences={parentSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -203,7 +215,6 @@ const ChairWork = () => {
             ]}
           />
         </div>
-
         <button
           css={css`
             width: 20%;
@@ -221,7 +232,7 @@ const ChairWork = () => {
           `}
           onClick={() => {
             setMode(modeResetter(mode + 1));
-            distributeMode(mode);
+            distributeMode(mode, ["hogehogehogehohge"]);
           }}
         >
           Switch Mode !!
