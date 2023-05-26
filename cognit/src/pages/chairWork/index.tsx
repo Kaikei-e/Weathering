@@ -71,7 +71,7 @@ const ChairWork = () => {
 
   const modeStyle = css`
     width: 28%;
-    height: 90%;
+    height: 95%;
     margin: 1%;
     border-radius: 12px;
     border: black 1px solid;
@@ -107,7 +107,9 @@ const ChairWork = () => {
         <h1 css={css``}>Chair Work</h1>
         <div
           css={css`
+            display: flex;
             font-size: 20px;
+            margin: 0;
           `}
         >
           <p>

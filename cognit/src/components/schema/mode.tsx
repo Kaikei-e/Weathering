@@ -78,7 +78,6 @@ export const Schema: React.FC<Props> = (props: Props) => {
         <ol
           css={css`
             padding: 4%;
-            
           `}
         >
           {sentences.map((sentence, index) => {
