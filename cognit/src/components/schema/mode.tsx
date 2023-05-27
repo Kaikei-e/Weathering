@@ -88,28 +88,21 @@ export const Schema: React.FC<Props> = (props: Props) => {
             display: none;
           }
         `}
-        >
-          {
-              (() => {
-                  switch (props.whichMode.mode) {
-                      case ModeType.HealthyAdult:
-                          return <MoodRecords moods={adultSentences} />;
-                      case ModeType.DysfunctionalChild:
-                          return <MoodRecords moods={childSentences} />;
-                      case ModeType.DysfunctionalParent:
-                          return <MoodRecords moods={parentSentences} />;
-                      default:
-                          return null;
-                  }
-              })()
+      >
+        {(() => {
+          switch (props.whichMode.mode) {
+            case ModeType.HealthyAdult:
+              return <MoodRecords moods={adultSentences} />;
+            case ModeType.DysfunctionalChild:
+              return <MoodRecords moods={childSentences} />;
+            case ModeType.DysfunctionalParent:
+              return <MoodRecords moods={parentSentences} />;
+            default:
+              return null;
           }
+        })()}
 
-
-
-
-
-
-          <div
+        <div
           css={css`
             width: 100%;
             height: 20%;
@@ -157,17 +150,21 @@ export const Schema: React.FC<Props> = (props: Props) => {
                   background-color: #689fcf;
                 `}
                 onClick={() => {
-                  console.log(writingSentence);
                   switch (props.whichMode.mode) {
                     case ModeType.HealthyAdult:
                       setAdultSentences([...adultSentences, writingSentence]);
-                      return;
+                      break;
                     case ModeType.DysfunctionalChild:
                       setChildSentences([...childSentences, writingSentence]);
-                      return;
+                      break;
+
                     case ModeType.DysfunctionalParent:
                       setParentSentences([...parentSentences, writingSentence]);
-                      return;
+                      break;
+                  }
+
+                  if (writingSentence !== "") {
+                    setWritingSentence("");
                   }
                 }}
               >
