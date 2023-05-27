@@ -4,13 +4,8 @@ import React, { useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 import LoadingCircle from "@/components/base/loadingCircle";
-import {
-  adultSentenceAtom,
-  childSentenceAtom,
-  parentSentenceAtom,
-} from "@/states/atoms/moodSentence";
-import { PrimitiveAtom, useAtom } from "jotai";
-import { ModeType, ModeUnion } from "@/pages/chairWork";
+
+import { ModeUnion } from "@/pages/chairWork";
 import MoodRecords from "@/components/schema/moodRecords";
 
 type Props = {
@@ -19,27 +14,14 @@ type Props = {
   modeStatement: React.ReactNode;
   whichMode: ModeUnion;
   inTheMode: boolean;
+  sentences: string[];
 };
 
 export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [adultSentences, setAdultSentences] = useAtom(adultSentenceAtom);
-  const [childSentences, setChildSentences] = useAtom(childSentenceAtom);
-  const [parentSentences, setParentSentences] = useAtom(parentSentenceAtom);
   const [writingSentence, setWritingSentence] = useState("");
   const openModal = () => {
     setIsOpen(true);
-  };
-
-  const stateSwitcher = (mode: ModeUnion): string[] => {
-    switch (mode.mode) {
-      case ModeType.HealthyAdult:
-        return adultSentences;
-      case ModeType.DysfunctionalChild:
-        return childSentences;
-      case ModeType.DysfunctionalParent:
-        return parentSentences;
-    }
   };
 
   return (
@@ -89,19 +71,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
           }
         `}
       >
-        {(() => {
-          switch (props.whichMode.mode) {
-            case ModeType.HealthyAdult:
-              return <MoodRecords moods={adultSentences} />;
-            case ModeType.DysfunctionalChild:
-              return <MoodRecords moods={childSentences} />;
-            case ModeType.DysfunctionalParent:
-              return <MoodRecords moods={parentSentences} />;
-            default:
-              return null;
-          }
-        })()}
-
+        <MoodRecords moods={props.sentences} />
         <div
           css={css`
             width: 100%;
@@ -150,22 +120,8 @@ export const Schema: React.FC<Props> = (props: Props) => {
                   background-color: #689fcf;
                 `}
                 onClick={() => {
-                  switch (props.whichMode.mode) {
-                    case ModeType.HealthyAdult:
-                      setAdultSentences([...adultSentences, writingSentence]);
-                      break;
-                    case ModeType.DysfunctionalChild:
-                      setChildSentences([...childSentences, writingSentence]);
-                      break;
-
-                    case ModeType.DysfunctionalParent:
-                      setParentSentences([...parentSentences, writingSentence]);
-                      break;
-                  }
-
-                  if (writingSentence !== "") {
-                    setWritingSentence("");
-                  }
+                  props.sentences.push(writingSentence);
+                  setWritingSentence("");
                 }}
               >
                 {" "}

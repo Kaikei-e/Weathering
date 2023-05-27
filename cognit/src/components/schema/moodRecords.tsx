@@ -24,7 +24,8 @@ const MoodRecords = (props: Props) => {
                 background-color: aliceblue;
               `}
             >
-              <text
+              <p
+                key={`${sentence}`}
                 css={css`
                   font-size: 16px;
                   overflow: visible;
@@ -34,7 +35,7 @@ const MoodRecords = (props: Props) => {
                 `}
               >
                 {sentence ? sentence : "No sentence"}
-              </text>
+              </p>
             </li>
           );
         })}

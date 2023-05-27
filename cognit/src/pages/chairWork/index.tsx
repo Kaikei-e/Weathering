@@ -33,19 +33,6 @@ export type DysfunctionalParent = {
   sentences: string[];
 };
 
-function distributeMode(mode: number, sentences: string[]): ModeUnion {
-  switch (mode) {
-    case ModeType.HealthyAdult:
-      return { mode: ModeType.HealthyAdult, sentences: sentences };
-    case ModeType.DysfunctionalChild:
-      return { mode: ModeType.DysfunctionalChild, sentences: sentences };
-    case ModeType.DysfunctionalParent:
-      return { mode: ModeType.DysfunctionalParent, sentences: sentences };
-    default:
-      return { mode: ModeType.HealthyAdult, sentences: sentences };
-  }
-}
-
 const enum modeColor {
   HealthyAdult = "#d4faa6",
   DysfunctionalChild = "#fdf48c",
@@ -72,7 +59,7 @@ function modeResetter(mode: number) {
 }
 
 const ChairWork = () => {
-  const [mode, setMode] = useState(ModeType.HealthyAdult);
+  const [modeType, setModeType] = useState(ModeType.HealthyAdult);
   const [adultSentence, setAdultSentence] = useAtom(adultSentenceAtom);
   const [childSentence, setChildSentence] = useAtom(childSentenceAtom);
   const [parentSentence, setParentSentence] = useAtom(parentSentenceAtom);
@@ -82,9 +69,48 @@ const ChairWork = () => {
     sentences: [],
   });
 
+  const modeSwitcher = (mode: ModeType) => {
+    switch (mode) {
+      case ModeType.HealthyAdult:
+        return {
+          mode: ModeType.HealthyAdult,
+          sentences: adultSentence,
+        };
+      case ModeType.DysfunctionalChild:
+        return {
+          mode: ModeType.DysfunctionalChild,
+          sentences: childSentence,
+        };
+      case ModeType.DysfunctionalParent:
+        return {
+          mode: ModeType.DysfunctionalParent,
+          sentences: parentSentence,
+        };
+    }
+  };
+
+  const handleModeChange = (
+    modeUnion: HealthyAdult | DysfunctionalChild | DysfunctionalParent
+  ) => {
+    switch (modeUnion.mode) {
+      case ModeType.HealthyAdult:
+        setAdultSentence(modeUnion.sentences);
+        break;
+      case ModeType.DysfunctionalChild:
+        setChildSentence(modeUnion.sentences);
+        break;
+      case ModeType.DysfunctionalParent:
+        setParentSentence(modeUnion.sentences);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
-    setMode(mode);
-  }, [mode]);
+    setModeType(modeType);
+  }, [modeType]);
 
   const modeStyle = css`
     width: 28%;
@@ -96,7 +122,7 @@ const ChairWork = () => {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: ${colorSwitcher(mode)};
+    background-color: ${colorSwitcher(modeType)};
   `;
 
   return (
@@ -166,6 +192,7 @@ const ChairWork = () => {
           <Schema
             title={"Healthy Adult"}
             whichMode={selectedMode}
+            sentences={adultSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -173,7 +200,7 @@ const ChairWork = () => {
                 statement={healthyAdultModeStatement}
               />
             }
-            inTheMode={ModeType.HealthyAdult === mode}
+            inTheMode={ModeType.HealthyAdult === modeType}
             css={[
               modeStyle,
               css`
@@ -184,6 +211,7 @@ const ChairWork = () => {
           <Schema
             title={"Dysfunctional Child"}
             whichMode={selectedMode}
+            sentences={childSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -191,7 +219,7 @@ const ChairWork = () => {
                 statement={dysfunctionalChildModeStatement}
               />
             }
-            inTheMode={ModeType.DysfunctionalChild === mode}
+            inTheMode={ModeType.DysfunctionalChild === modeType}
             css={[
               modeStyle,
               css`
@@ -202,6 +230,7 @@ const ChairWork = () => {
           <Schema
             title={"Dysfunctional Parent"}
             whichMode={selectedMode}
+            sentences={parentSentence}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -209,7 +238,7 @@ const ChairWork = () => {
                 statement={dysfunctionalParentModeStatement}
               />
             }
-            inTheMode={ModeType.DysfunctionalParent === mode}
+            inTheMode={ModeType.DysfunctionalParent === modeType}
             css={[
               modeStyle,
               css`
@@ -236,8 +265,8 @@ const ChairWork = () => {
             transition: background-color 0.3s ease;
           `}
           onClick={() => {
-            setMode(modeResetter(mode + 1));
-            distributeMode(mode, ["hogehogehogehohge"]);
+            setModeType(modeResetter(modeType + 1));
+            handleModeChange(modeSwitcher(modeType));
           }}
         >
           Switch Mode !!
