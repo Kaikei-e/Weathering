@@ -1,14 +1,10 @@
-import {atom, Getter, Setter, WritableAtom} from "jotai";
+import { atom, Getter, Setter, WritableAtom } from "jotai";
 
-
-export const sentenceAtom = atom([""])
-export const adultSentenceAtom = atom(
-    (get) => get(sentenceAtom),
-    (get, set, newSentence) => {
-        set(sentenceAtom, newSentence)
-    }
-)
-export const childSentenceAtom: WritableAtom<string, string[], string[]> = atom([""]);
-export const parentSentenceAtom : WritableAtom<string, string[], string[]> = atom([""]);
-export const moodSentenceAtom = atom([adultSentenceAtom, childSentenceAtom, parentSentenceAtom]);
-
+export const adultSentenceAtom = atom<string[]>([]);
+export const childSentenceAtom = atom<string[]>([]);
+export const parentSentenceAtom = atom<string[]>([]);
+export const moodSentenceAtom = atom([
+  adultSentenceAtom,
+  childSentenceAtom,
+  parentSentenceAtom,
+]);

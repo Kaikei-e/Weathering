@@ -1,35 +1,46 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "../base/modal/modal";
 import ModalButton from "../base/modal/modalButton";
 import LoadingCircle from "@/components/base/loadingCircle";
 import {
-    moodSentenceAtom
+  adultSentenceAtom,
+  childSentenceAtom,
+  parentSentenceAtom,
 } from "@/states/atoms/moodSentence";
-import {atom, useAtom, useSetAtom} from "jotai";
+import { PrimitiveAtom, useAtom } from "jotai";
+import { ModeType, ModeUnion } from "@/pages/chairWork";
+import MoodRecords from "@/components/schema/moodRecords";
 
 type Props = {
   className?: string;
   title: string;
   modeStatement: React.ReactNode;
+  whichMode: ModeUnion;
   inTheMode: boolean;
 };
 
 export const Schema: React.FC<Props> = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [sentences, setSentences] = useAtom(moodSentenceAtom);
+  const [adultSentences, setAdultSentences] = useAtom(adultSentenceAtom);
+  const [childSentences, setChildSentences] = useAtom(childSentenceAtom);
+  const [parentSentences, setParentSentences] = useAtom(parentSentenceAtom);
   const [writingSentence, setWritingSentence] = useState("");
-  const setSentence = useSetAtom(moodSentenceAtom);
-
   const openModal = () => {
     setIsOpen(true);
   };
 
-  //
-  // useEffect(() => {
-  //   setSentences(props.moodSentences);
-  // }, [props.moodSentences]);
+  const stateSwitcher = (mode: ModeUnion): string[] => {
+    switch (mode.mode) {
+      case ModeType.HealthyAdult:
+        return adultSentences;
+      case ModeType.DysfunctionalChild:
+        return childSentences;
+      case ModeType.DysfunctionalParent:
+        return parentSentences;
+    }
+  };
 
   return (
     <div className={props.className}>
@@ -77,38 +88,28 @@ export const Schema: React.FC<Props> = (props: Props) => {
             display: none;
           }
         `}
-      >
-        <ol
-          css={css`
-            padding: 4%;
-          `}
         >
-          {sentences.map((sentence) => {
-            return (
-              <li
-                key={`${sentence}`}
-                css={css`
-                  border-radius: 5px;
-                  margin: 1%;
-                  background-color: aliceblue;
-                `}
-              >
-                <text
-                  css={css`
-                    font-size: 16px;
-                    overflow: visible;
-                    resize: none;
-                    overflow-wrap: anywhere;
-                    text-align: start;
-                  `}
-                >
-                  {atom((get) => get(sentence)) ? sentence : "No sentence"}
-                </text>
-              </li>
-            );
-          })}
-        </ol>
-        <div
+          {
+              (() => {
+                  switch (props.whichMode.mode) {
+                      case ModeType.HealthyAdult:
+                          return <MoodRecords moods={adultSentences} />;
+                      case ModeType.DysfunctionalChild:
+                          return <MoodRecords moods={childSentences} />;
+                      case ModeType.DysfunctionalParent:
+                          return <MoodRecords moods={parentSentences} />;
+                      default:
+                          return null;
+                  }
+              })()
+          }
+
+
+
+
+
+
+          <div
           css={css`
             width: 100%;
             height: 20%;
@@ -121,58 +122,60 @@ export const Schema: React.FC<Props> = (props: Props) => {
             align-items: center;
           `}
         >
-          {(() => {
-            if (props.inTheMode) {
-              return (
-                <div
-                  css={css`
-                    width: 90%;
-                    height: 80%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                  `}
-                >
-                  <input
-                    type="text"
-                    css={css`
-                      width: 100%;
-                      height: 100%;
-                      border-radius: 5px;
-                      padding: 1%;
-                      background-color: #d4faa6;
-                    `}
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                      setWritingSentence(e.target.value);
-                    }}
-                  />
-                  <button
-                    css={css`
-                      width: 60%;
-                      height: 50%;
-                      border-radius: 5px;
-                      margin-top: 1%;
-                      color: white;
-                      font-size: 20px;
-                      background-color: #689fcf;
-                    `}
-                    onClick={() => {
-                      console.log(writingSentence);
-                      setSentence((sentences) => [
-                        ...sentences,
-                        writingSentence,
-                      ]);
-                    }}
-                  >
-                    {" "}
-                    Submit
-                  </button>
-                </div>
-              );
-            }
-          })()}
+          {props.inTheMode && (
+            <div
+              css={css`
+                width: 90%;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              `}
+            >
+              <input
+                type="text"
+                css={css`
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 5px;
+                  padding: 1%;
+                  background-color: #d4faa6;
+                `}
+                onChange={(e) => {
+                  setWritingSentence(e.target.value);
+                }}
+              />
+              <button
+                css={css`
+                  width: 60%;
+                  height: 50%;
+                  border-radius: 5px;
+                  margin-top: 1%;
+                  color: white;
+                  font-size: 20px;
+                  background-color: #689fcf;
+                `}
+                onClick={() => {
+                  console.log(writingSentence);
+                  switch (props.whichMode.mode) {
+                    case ModeType.HealthyAdult:
+                      setAdultSentences([...adultSentences, writingSentence]);
+                      return;
+                    case ModeType.DysfunctionalChild:
+                      setChildSentences([...childSentences, writingSentence]);
+                      return;
+                    case ModeType.DysfunctionalParent:
+                      setParentSentences([...parentSentences, writingSentence]);
+                      return;
+                  }
+                }}
+              >
+                {" "}
+                Submit
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

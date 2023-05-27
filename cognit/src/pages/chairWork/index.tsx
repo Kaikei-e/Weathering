@@ -12,23 +12,23 @@ import {
 
 export type ModeUnion = HealthyAdult | DysfunctionalChild | DysfunctionalParent;
 
-const enum ModeType {
+export const enum ModeType {
   HealthyAdult = 0,
   DysfunctionalChild = 1,
   DysfunctionalParent = 2,
 }
 
-type HealthyAdult = {
+export type HealthyAdult = {
   mode: ModeType.HealthyAdult;
   sentences: string[];
 };
 
-type DysfunctionalChild = {
+export type DysfunctionalChild = {
   mode: ModeType.DysfunctionalChild;
   sentences: string[];
 };
 
-type DysfunctionalParent = {
+export type DysfunctionalParent = {
   mode: ModeType.DysfunctionalParent;
   sentences: string[];
 };
@@ -76,6 +76,11 @@ const ChairWork = () => {
   const [adultSentence, setAdultSentence] = useAtom(adultSentenceAtom);
   const [childSentence, setChildSentence] = useAtom(childSentenceAtom);
   const [parentSentence, setParentSentence] = useAtom(parentSentenceAtom);
+
+  const [selectedMode, setSelectedMode] = useState<ModeUnion>({
+    mode: ModeType.HealthyAdult,
+    sentences: [],
+  });
 
   useEffect(() => {
     setMode(mode);
@@ -160,7 +165,7 @@ const ChairWork = () => {
         >
           <Schema
             title={"Healthy Adult"}
-            moodSentences={adultSentence}
+            whichMode={selectedMode}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -178,7 +183,7 @@ const ChairWork = () => {
           />
           <Schema
             title={"Dysfunctional Child"}
-            moodSentences={childSentence}
+            whichMode={selectedMode}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
@@ -196,7 +201,7 @@ const ChairWork = () => {
           />
           <Schema
             title={"Dysfunctional Parent"}
-            moodSentences={parentSentence}
+            whichMode={selectedMode}
             modeStatement={
               <StatementParagraph
                 fontSize={24}
