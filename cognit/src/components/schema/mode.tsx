@@ -105,8 +105,12 @@ export const Schema: React.FC<Props> = (props: Props) => {
                   padding: 1%;
                   background-color: #d4faa6;
                 `}
+                value={writingSentence}
                 onChange={(e) => {
                   setWritingSentence(e.target.value);
+                  if(writingSentence === e.target.value) {
+                      setWritingSentence("")
+                  }
                 }}
               />
               <button
@@ -120,6 +124,7 @@ export const Schema: React.FC<Props> = (props: Props) => {
                   background-color: #689fcf;
                 `}
                 onClick={() => {
+                  if (writingSentence === "") return;
                   props.sentences.push(writingSentence);
                   setWritingSentence("");
                 }}

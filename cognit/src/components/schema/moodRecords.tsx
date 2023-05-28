@@ -15,29 +15,31 @@ const MoodRecords = (props: Props) => {
         `}
       >
         {props.moods.map((sentence) => {
-          return (
-            <li
-              key={`${sentence}`}
-              css={css`
-                border-radius: 5px;
-                margin: 2%;
-                background-color: aliceblue;
-              `}
-            >
-              <p
+          if (sentence !== "") {
+            return (
+              <li
                 key={`${sentence}`}
                 css={css`
-                  font-size: 16px;
-                  overflow: visible;
-                  resize: none;
-                  overflow-wrap: anywhere;
-                  text-align: start;
+                  border-radius: 5px;
+                  margin: 4%;
+                  background-color: aliceblue;
                 `}
               >
-                {sentence ? sentence : "No sentence"}
-              </p>
-            </li>
-          );
+                <p
+                  key={`${sentence}`}
+                  css={css`
+                    font-size: 16px;
+                    overflow: visible;
+                    resize: none;
+                    overflow-wrap: anywhere;
+                    text-align: start;
+                  `}
+                >
+                  {sentence ? sentence : "No sentence"}
+                </p>
+              </li>
+            );
+          }
         })}
       </ol>
     </div>
