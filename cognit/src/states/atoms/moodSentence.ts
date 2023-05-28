@@ -1,4 +1,4 @@
-import { atom, Getter, Setter, WritableAtom } from "jotai";
+import { atom } from "jotai";
 
 export const adultSentenceAtom = atom<string[]>([]);
 export const childSentenceAtom = atom<string[]>([]);

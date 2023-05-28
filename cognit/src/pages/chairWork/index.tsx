@@ -64,7 +64,7 @@ const ChairWork = () => {
   const [childSentence, setChildSentence] = useAtom(childSentenceAtom);
   const [parentSentence, setParentSentence] = useAtom(parentSentenceAtom);
 
-  const [selectedMode, setSelectedMode] = useState<ModeUnion>({
+  const [selectedMode, _] = useState<ModeUnion>({
     mode: ModeType.HealthyAdult,
     sentences: [],
   });
