@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import Button from "next/link";
+import EeMotion from "@/pages/EeMotion";
 
 const Home = () => {
   return (
@@ -31,16 +32,7 @@ const Home = () => {
           >
             Weathering: Flow, Adapt, Overcome !
           </h1>
-          <div
-            css={css`
-              width: 100%;
-              height: 50vh;
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              grid-template-rows: repeat(2, 1fr);
-              grid-gap: 10px;
-            `}
-          >
+          <div css={header}>
             <div
               css={css`
                 display: flex;
@@ -71,8 +63,21 @@ const Home = () => {
                 height: 40vh;
               `}
             >
-              <h2>EeMotion: logging your mood</h2>
+              <Button
+                href={"/EeMotion"}
+                css={css`
+                  width: 50%;
+                  height: 40%;
+                  background-color: azure;
+                  border-radius: 10px;
+                  border: 1px solid black;
+                  text-align: center;
+                `}
+              >
+                <h2>EeMotion: Logging your moods</h2>
+              </Button>
             </div>
+
             <div
               css={css`
                 display: flex;
@@ -101,3 +106,12 @@ const Home = () => {
 };
 
 export default Home;
+
+const header = css`
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+`;
