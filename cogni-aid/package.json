@@ -29,7 +29,7 @@
     "vite": "^4.1.4",
     "vitest": "^0.26.3"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@4.1.1",
   "dependencies": {
     "solid": "latest"
   }
